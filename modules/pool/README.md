@@ -34,7 +34,7 @@
 | <a name="input_locale"></a> [locale](#input\_locale) | (Required) The locale in which you would like to create the IPAM pool | `string` | `"us-east-1"` | no |
 | <a name="input_public_ip_source"></a> [public\_ip\_source](#input\_public\_ip\_source) | (Optional) The IP address source for pools in the public scope | `string` | `"byoip"` | no |
 | <a name="input_publicly_advertisable"></a> [publicly\_advertisable](#input\_publicly\_advertisable) | (Optional) Defines whether or not IPv6 pool space is publicly advertisable over the internet | `bool` | `false` | no |
-| <a name="input_tags"></a> [tags](#input\_tags) | (Optional) A map of tags to assign to the resource | `map(string)` | <pre>{<br>  "Test": "Main"<br>}</pre> | no |
+| <a name="input_tags"></a> [tags](#input\_tags) | (Optional) A map of tags to assign to the resource | `map(string)` | `{}` | no |
 
 ## Outputs
 

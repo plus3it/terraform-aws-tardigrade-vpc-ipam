@@ -77,5 +77,5 @@ variable "source_ipam_pool_id" {
 variable "tags" {
   description = "(Optional) A map of tags to assign to the resource"
   type        = map(string)
-  default     = { "Test" = "Main" }
+  default     = {}
 }

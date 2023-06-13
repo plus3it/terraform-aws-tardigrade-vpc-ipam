@@ -24,7 +24,7 @@
 | <a name="input_cascade"></a> [cascade](#input\_cascade) | (Optional) Enables you to quickly delete an IPAM, private scopes, pools in private scopes, and any allocations in the pools in private scopes | `bool` | `false` | no |
 | <a name="input_description"></a> [description](#input\_description) | (Optional) A description for the IPAM | `string` | `"My IPAM"` | no |
 | <a name="input_region_name"></a> [region\_name](#input\_region\_name) | (Required) The name of the Region you want to add to the IPAM | `string` | `"us-east-1"` | no |
-| <a name="input_tags"></a> [tags](#input\_tags) | (Optional) A map of tags to assign to the resource | `map(string)` | <pre>{<br>  "Test": "Main"<br>}</pre> | no |
+| <a name="input_tags"></a> [tags](#input\_tags) | (Optional) A map of tags to assign to the resource | `map(string)` | `{}` | no |
 
 ## Outputs
 

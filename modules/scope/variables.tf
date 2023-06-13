@@ -12,5 +12,5 @@ variable "description" {
 variable "tags" {
   description = "(Optional) Key-value mapping of resource tags."
   type        = map(string)
-  default     = { "Name" = "test" }
+  default     = {}
 }

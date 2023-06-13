@@ -11,5 +11,5 @@ variable "ipam_resource_discovery_id" {
 variable "tags" {
   description = "(Optional) A map of tags to add to the IPAM resource discovery association resource."
   type        = map(string)
-  default     = { "Name" = "test" }
+  default     = {}
 }
