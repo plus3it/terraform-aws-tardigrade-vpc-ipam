@@ -1,4 +1,4 @@
-## {{ repo-name }}
+## {{ terraform-aws-tardigrade-vpc-ipam }}
 
 All notable changes to this project will be documented in this file.
 
