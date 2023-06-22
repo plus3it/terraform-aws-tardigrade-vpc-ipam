@@ -1,7 +1,5 @@
 module "ipam" {
   source      = "./modules/ipam"
-  description = var.ipam.description
-  region_name = var.ipam.region_name
   tags        = var.ipam.tags
   cascade     = var.ipam.cascade
 }
@@ -15,7 +13,6 @@ module "vpc_ipam_pool" {
   allocation_resource_tags          = var.pool.allocation_resource_tags
   auto_import                       = var.pool.auto_import
   aws_service                       = var.pool.aws_service
-  description                       = var.pool.description
   ipam_scope_id                     = var.pool.ipam_scope_id
   locale                            = var.pool.locale
   publicly_advertisable             = var.pool.publicly_advertisable
@@ -36,7 +33,6 @@ module "vpc_ipam_pool_cidr" {
 module "vpc_ipam_pool_cidr_allocation" {
   source           = "./modules/pool-cidr-allocation"
   cidr             = var.pool_cidr_allocation.cidr
-  description      = var.pool_cidr_allocation.description
   disallowed_cidrs = var.pool_cidr_allocation.disallowed_cidrs
   ipam_pool_id     = var.pool_cidr_allocation.ipam_pool_id
   netmask_length   = var.pool_cidr_allocation.netmask_length
@@ -44,7 +40,6 @@ module "vpc_ipam_pool_cidr_allocation" {
 
 module "vpc_ipam_resource_discovery" {
   source      = "./modules/resource-discovery"
-  description = var.resource_discovery.description
   region_name = var.resource_discovery.region_name
   tags        = var.resource_discovery.tags
 }
@@ -66,6 +61,5 @@ module "vpc_ipam_preview_next_cidr" {
 module "vpc_ipam_scope" {
   source      = "./modules/scope"
   ipam_id     = var.scope.ipam_id
-  description = var.scope.description
   tags        = var.scope.tags
 }

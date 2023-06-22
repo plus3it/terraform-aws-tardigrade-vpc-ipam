@@ -1,8 +1,7 @@
 variable "ipam" {
   description = "Object of inputs for IPAM resources"
   type = object({
-    description = string
-    region_name = string
+    region_name = optional(string)
     tags        = optional(map(string))
     cascade     = optional(bool)
   })
@@ -20,8 +19,7 @@ variable "pool" {
     allocation_resource_tags          = optional(map(string))
     auto_import                       = optional(bool)
     aws_service                       = optional(bool)
-    description                       = string
-    ipam_scope_id                     = string
+    ipam_scope_id                     = optional(string)
     locale                            = optional(string)
     publicly_advertisable             = optional(bool)
     public_ip_source                  = optional(string)
@@ -35,10 +33,10 @@ variable "pool" {
 variable "pool_cidr" {
   description = "Object of inputs for Pool CIDR resources"
   type = object({
-    cidr                                 = string
+    cidr                                 = optional(string)
     cidr_authorization_context_message   = optional(string)
     cidr_authorization_context_signature = optional(string)
-    ipam_pool_id                         = string
+    ipam_pool_id                         = optional(string)
     netmask_length                       = optional(number)
   })
   default  = {}
@@ -48,10 +46,9 @@ variable "pool_cidr" {
 variable "pool_cidr_allocation" {
   description = "Object of inputs for Pool CIDR Allocation resources"
   type = object({
-    cidr             = string
-    description      = optional(string)
+    cidr             = optional(string)
     disallowed_cidrs = optional(list(string))
-    ipam_pool_id     = string
+    ipam_pool_id     = optional(string)
     netmask_length   = optional(number)
   })
   default  = {}
@@ -62,8 +59,7 @@ variable "pool_cidr_allocation" {
 variable "resource_discovery" {
   description = "Object of inputs for Resource Discovery resources"
   type = object({
-    description = string
-    region_name = string
+    region_name = optional(string)
     tags        = optional(map(string))
   })
   default  = {}
@@ -74,8 +70,8 @@ variable "resource_discovery" {
 variable "resource_discovery_association" {
   description = "Object of inputs for Resource Discovery Association resources"
   type = object({
-    ipam_id                    = string
-    ipam_resource_discovery_id = string
+    ipam_id                    = optional(string)
+    ipam_resource_discovery_id = optional(string)
     tags                       = optional(map(string))
   })
   default  = {}
@@ -86,9 +82,9 @@ variable "resource_discovery_association" {
 variable "preview_next_cidr" {
   description = "Object of inputs for Preview Next CIDR resources"
   type = object({
-    disallowed_cidrs = list(string)
-    ipam_pool_id     = string
-    netmask_length   = number
+    disallowed_cidrs = optional(list(string))
+    ipam_pool_id     = optional(string)
+    netmask_length   = optional(number)
   })
   default  = {}
   nullable = false
@@ -98,8 +94,7 @@ variable "preview_next_cidr" {
 variable "scope" {
   description = "Object of inputs for Scope resources"
   type = object({
-    ipam_id     = string
-    description = string
+    ipam_id     = optional(string)
     tags        = optional(map(string))
   })
   default  = {}

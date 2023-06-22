@@ -1,7 +1,7 @@
 variable "description" {
   description = "(Optional) A description for the IPAM Resource Discovery."
   type        = string
-  default     = "My IPAM Resource Discovery"
+  default     = null
 }
 
 variable "region_name" {

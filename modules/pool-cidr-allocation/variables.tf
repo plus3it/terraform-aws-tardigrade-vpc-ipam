@@ -7,7 +7,7 @@ variable "cidr" {
 variable "description" {
   description = "(Optional) The description for the allocation"
   type        = string
-  default     = "My IPAM Pool CIDR Allocation"
+  default     = null
 }
 
 variable "disallowed_cidrs" {

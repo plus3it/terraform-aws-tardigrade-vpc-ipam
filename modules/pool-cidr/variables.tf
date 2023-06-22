@@ -1,7 +1,7 @@
 variable "cidr" {
   description = "(Required) The CIDR you want to assign to the pool"
   type        = string
-  default     = "172.2.0.0/16"
+  default     = false
 }
 
 variable "cidr_authorization_context_message" {
