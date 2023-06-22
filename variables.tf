@@ -94,8 +94,8 @@ variable "preview_next_cidr" {
 variable "scope" {
   description = "Object of inputs for Scope resources"
   type = object({
-    ipam_id     = optional(string)
-    tags        = optional(map(string))
+    ipam_id = optional(string)
+    tags    = optional(map(string))
   })
   default  = {}
   nullable = false

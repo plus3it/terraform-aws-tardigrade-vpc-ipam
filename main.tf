@@ -1,7 +1,7 @@
 module "ipam" {
-  source      = "./modules/ipam"
-  tags        = var.ipam.tags
-  cascade     = var.ipam.cascade
+  source  = "./modules/ipam"
+  tags    = var.ipam.tags
+  cascade = var.ipam.cascade
 }
 
 module "vpc_ipam_pool" {
@@ -59,7 +59,7 @@ module "vpc_ipam_preview_next_cidr" {
 }
 
 module "vpc_ipam_scope" {
-  source      = "./modules/scope"
-  ipam_id     = var.scope.ipam_id
-  tags        = var.scope.tags
+  source  = "./modules/scope"
+  ipam_id = var.scope.ipam_id
+  tags    = var.scope.tags
 }
