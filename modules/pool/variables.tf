@@ -43,7 +43,7 @@ variable "aws_service" {
 variable "description" {
   description = "(Optional) A description for the IPAM pool"
   type        = string
-  default     = "My IPAM Pool"
+  default     = null
 }
 
 variable "ipam_scope_id" {

@@ -6,7 +6,7 @@ variable "ipam_id" {
 variable "description" {
   description = "(Optional) A description for the scope you're creating."
   type        = string
-  default     = "My IPAM Scope"
+  default     = null
 }
 
 variable "tags" {
