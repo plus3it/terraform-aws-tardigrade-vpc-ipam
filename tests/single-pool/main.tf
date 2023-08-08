@@ -2,8 +2,8 @@ provider "aws" {
   region = var.ipam.region_name
 }
 
-module "test_scenario" {
-  source = "../../" # Path to the root module
+module "single-pool" {
+  source = "../.."
 
   ipam = var.ipam
 
@@ -13,17 +13,12 @@ module "test_scenario" {
     tags                              = var.pool.tags
   }
 
-  pool_cidr = [
-    {
-      cidr = var.pool_cidr1.cidr
-      tags = var.pool_cidr1.tags
-    },
-    {
-      cidr = var.pool_cidr2.cidr
-      tags = var.pool_cidr2.tags
-    },
-  ]
+  pool_cidr = {
+    cidr = var.pool_cidr.cidr
+    tags = var.pool_cidr.tags
+  }
 }
+
 
 data "terraform_remote_state" "prereq" {
   backend = "local"
