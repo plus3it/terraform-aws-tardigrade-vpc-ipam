@@ -4,10 +4,12 @@ variable "description" {
   default     = null
 }
 
-variable "region_name" {
-  description = "(Required) The name of the Region you want to add to the IPAM."
-  type        = string
-  default     = "us-east-1"
+variable "operating_regions" {
+  description = "List of operating regions for IPAM resource discovery."
+  type        = list(object({
+    region_name = string
+    # Include other attributes if needed
+  }))
 }
 
 variable "tags" {

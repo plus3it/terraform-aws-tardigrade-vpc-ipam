@@ -28,7 +28,10 @@ module "vpc_ipam_pool_cidr" {
   cidr_authorization_context_signature = var.pool_cidr.cidr_authorization_context_signature
   ipam_pool_id                         = var.pool_cidr.ipam_pool_id
   netmask_length                       = var.pool_cidr.netmask_length
+  cidr_filter_pattern                  = "10.*" # Optional, can be customized
+  address_family                       = "IPv4" # Optional, can be customized
 }
+
 
 module "vpc_ipam_pool_cidr_allocation" {
   source           = "./modules/pool-cidr-allocation"
@@ -39,8 +42,13 @@ module "vpc_ipam_pool_cidr_allocation" {
 }
 
 module "vpc_ipam_resource_discovery" {
-  source      = "./modules/resource-discovery"
-  region_name = var.resource_discovery.region_name
+  source            = "./modules/resource-discovery"
+  description       = "Resource Discovery Description"
+  operating_regions = [
+    { region_name = "us-east-1" },
+    { region_name = "us-west-2" }
+    # Add more regions as needed
+  ]
   tags        = var.resource_discovery.tags
 }
 
