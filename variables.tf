@@ -5,7 +5,7 @@ variable "ipam" {
     tags        = optional(map(string))
     cascade     = optional(bool)
   })
-  default  = {}
+  default = {}
 }
 
 variable "pool" {
@@ -25,7 +25,7 @@ variable "pool" {
     source_ipam_pool_id               = optional(string)
     tags                              = optional(map(string))
   })
-  default  = {}
+  default = {}
 }
 
 variable "pool_cidr" {
@@ -37,7 +37,7 @@ variable "pool_cidr" {
     ipam_pool_id                         = optional(string)
     netmask_length                       = optional(number)
   })
-  default  = {}
+  default = {}
 }
 
 variable "pool_cidr_allocation" {
@@ -48,7 +48,7 @@ variable "pool_cidr_allocation" {
     ipam_pool_id     = optional(string)
     netmask_length   = optional(number)
   })
-  default  = {}
+  default = {}
 }
 
 variable "resource_discovery" {
@@ -57,7 +57,7 @@ variable "resource_discovery" {
     region_name = optional(string)
     tags        = optional(map(string))
   })
-  default  = {}
+  default = {}
 }
 
 variable "resource_discovery_association" {
@@ -67,7 +67,7 @@ variable "resource_discovery_association" {
     ipam_resource_discovery_id = optional(string)
     tags                       = optional(map(string))
   })
-  default  = {}
+  default = {}
 }
 
 variable "preview_next_cidr" {
@@ -77,7 +77,7 @@ variable "preview_next_cidr" {
     ipam_pool_id     = optional(string)
     netmask_length   = optional(number)
   })
-  default  = {}
+  default = {}
 }
 
 variable "scope" {
@@ -86,5 +86,5 @@ variable "scope" {
     ipam_id = optional(string)
     tags    = optional(map(string))
   })
-  default  = {}
+  default = {}
 }

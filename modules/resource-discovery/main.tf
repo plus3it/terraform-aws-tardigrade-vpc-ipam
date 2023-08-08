@@ -1,6 +1,6 @@
 resource "aws_vpc_ipam_resource_discovery" "this" {
   description = var.description
-  
+
   dynamic "operating_regions" {
     for_each = var.operating_regions
     content {

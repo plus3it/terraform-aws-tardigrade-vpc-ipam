@@ -6,7 +6,7 @@ variable "description" {
 
 variable "operating_regions" {
   description = "List of operating regions for IPAM resource discovery."
-  type        = list(object({
+  type = list(object({
     region_name = string
     # Include other attributes if needed
   }))

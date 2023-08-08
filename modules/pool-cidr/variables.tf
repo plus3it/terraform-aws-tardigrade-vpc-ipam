@@ -22,7 +22,7 @@ variable "cidr_authorization_context_signature" {
 
 variable "cidr_filter_pattern" {
   description = "The CIDR pattern to filter the IPAM pool CIDRs."
-  type        = string 
+  type        = string
   default     = "10.*"
 }
 

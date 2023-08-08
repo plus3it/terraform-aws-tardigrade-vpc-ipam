@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 module "test_scenario" {
-  source = "../../"  # Path to the root module
+  source = "../../" # Path to the root module
 
   ipam = var.ipam
 

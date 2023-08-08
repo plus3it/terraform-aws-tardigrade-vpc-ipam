@@ -42,14 +42,14 @@ module "vpc_ipam_pool_cidr_allocation" {
 }
 
 module "vpc_ipam_resource_discovery" {
-  source            = "./modules/resource-discovery"
-  description       = "Resource Discovery Description"
+  source      = "./modules/resource-discovery"
+  description = "Resource Discovery Description"
   operating_regions = [
     { region_name = "us-east-1" },
     { region_name = "us-west-2" }
     # Add more regions as needed
   ]
-  tags        = var.resource_discovery.tags
+  tags = var.resource_discovery.tags
 }
 
 module "vpc_ipam_resource_discovery_association" {

@@ -21,8 +21,8 @@
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| <a name="input_operating_regions"></a> [operating\_regions](#input\_operating\_regions) | List of operating regions for IPAM resource discovery. | <pre>list(object({<br>    region_name = string<br>    # Include other attributes if needed<br>  }))</pre> | n/a | yes |
 | <a name="input_description"></a> [description](#input\_description) | (Optional) A description for the IPAM Resource Discovery. | `string` | `null` | no |
-| <a name="input_region_name"></a> [region\_name](#input\_region\_name) | (Required) The name of the Region you want to add to the IPAM. | `string` | `"us-east-1"` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | (Optional) A map of tags to assign to the resource. | `map(string)` | `{}` | no |
 
 ## Outputs

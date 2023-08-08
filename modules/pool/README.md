@@ -30,7 +30,7 @@
 | <a name="input_allocation_resource_tags"></a> [allocation\_resource\_tags](#input\_allocation\_resource\_tags) | (Optional) Tags that are required for resources that use CIDRs from this IPAM pool | `map(string)` | <pre>{<br>  "Test": "Allocation"<br>}</pre> | no |
 | <a name="input_auto_import"></a> [auto\_import](#input\_auto\_import) | (Optional) If you include this argument, IPAM automatically imports any VPCs you have in your scope that fall within the CIDR range in the pool | `bool` | `false` | no |
 | <a name="input_aws_service"></a> [aws\_service](#input\_aws\_service) | (Optional) Limits which AWS service the pool can be used in | `string` | `"ec2"` | no |
-| <a name="input_description"></a> [description](#input\_description) | (Optional) A description for the IPAM pool | `string` | `"My IPAM Pool"` | no |
+| <a name="input_description"></a> [description](#input\_description) | (Optional) A description for the IPAM pool | `string` | `null` | no |
 | <a name="input_locale"></a> [locale](#input\_locale) | (Required) The locale in which you would like to create the IPAM pool | `string` | `"us-east-1"` | no |
 | <a name="input_public_ip_source"></a> [public\_ip\_source](#input\_public\_ip\_source) | (Optional) The IP address source for pools in the public scope | `string` | `"byoip"` | no |
 | <a name="input_publicly_advertisable"></a> [publicly\_advertisable](#input\_publicly\_advertisable) | (Optional) Defines whether or not IPv6 pool space is publicly advertisable over the internet | `bool` | `false` | no |
