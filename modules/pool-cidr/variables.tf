@@ -1,6 +1,6 @@
 variable "address_family" {
   description = "The address family for the managed prefix list."
-  type        = "string"
+  type        = string
   default     = "IPv4"
 }
 
@@ -22,7 +22,7 @@ variable "cidr_authorization_context_signature" {
 
 variable "cidr_filter_pattern" {
   description = "The CIDR pattern to filter the IPAM pool CIDRs."
-  type        = "string"
+  type        = string 
   default     = "10.*"
 }
 
