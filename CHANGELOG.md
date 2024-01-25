@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
+### [1.0.2] (https://github.com/plus3it/terraform-aws-tardigrade-private-certificate-authority/releases/tag/1.0.1)
+
+**Released**: 2024.01.24
+
+**Summary**:
+
+*   Revision to outputs.tf for downstream usage
+
 ### [1.0.1] (https://github.com/plus3it/terraform-aws-tardigrade-private-certificate-authority/releases/tag/1.0.1)
 
 **Released**: 2023.12.18
