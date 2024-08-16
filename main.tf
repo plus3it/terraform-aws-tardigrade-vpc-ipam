@@ -2,13 +2,14 @@ resource "aws_vpc_ipam" "this" {
   count = var.vpc_ipam.ipam != null ? 1 : 0
 
   description = var.vpc_ipam.ipam.description
+  cascade     = var.vpc_ipam.ipam.cascade
+
   dynamic "operating_regions" {
     for_each = var.vpc_ipam.ipam.operating_regions
     content {
       region_name = operating_regions.value.region_name
     }
   }
-  cascade = var.vpc_ipam.ipam.cascade
 
   tags = merge(
     var.vpc_ipam.ipam.name != null ? { Name = var.vpc_ipam.ipam.name } : {},
@@ -27,16 +28,17 @@ resource "aws_vpc_ipam_pool" "this" {
   auto_import                       = each.value.auto_import
   aws_service                       = try(lower(each.value.aws_service), null)
   description                       = each.value.description
+  locale                            = try(lower(each.value.locale), null)
+  publicly_advertisable             = each.value.publicly_advertisable
+  public_ip_source                  = each.value.public_ip_source
+  source_ipam_pool_id               = each.value.source_ipam_pool_id
+
   ipam_scope_id = coalesce(
     each.value.ipam_scope_name == "private_default_scope" ? aws_vpc_ipam.this[0].private_default_scope_id : null,
     each.value.ipam_scope_name == "public_default_scope" ? aws_vpc_ipam.this[0].public_default_scope_id : null,
     try(aws_vpc_ipam_scope.this[each.value.ipam_scope_name].id, null),
     each.value.ipam_scope_id,
   )
-  locale                = try(lower(each.value.locale), null)
-  publicly_advertisable = each.value.publicly_advertisable
-  public_ip_source      = each.value.public_ip_source
-  source_ipam_pool_id   = each.value.source_ipam_pool_id
 
   tags = merge(
     {
@@ -47,8 +49,8 @@ resource "aws_vpc_ipam_pool" "this" {
 
   lifecycle {
     precondition {
-      condition     = each.value.ipam_scope_name != "" && each.value.ipam_scope_id != ""
-      error_message = "You can't create a scope with both a name and an ID"
+      condition     = !(each.value.ipam_scope_name != null && each.value.ipam_scope_id != null)
+      error_message = "Cannot set both 'ipam_scope_name' and 'ipam_scope_id'"
     }
   }
 }
@@ -56,7 +58,14 @@ resource "aws_vpc_ipam_pool" "this" {
 resource "aws_vpc_ipam_pool_cidr" "this" {
   for_each = { for cidr in var.vpc_ipam.pool_cidrs : cidr.name => cidr }
 
-  cidr = each.value.cidr
+  cidr           = each.value.cidr
+  netmask_length = each.value.netmask_length
+
+  ipam_pool_id = try(
+    aws_vpc_ipam_pool.this[each.value.ipam_pool_name].id,
+    each.value.ipam_pool_id,
+  )
+
   dynamic "cidr_authorization_context" {
     for_each = each.value.cidr_authorization_context != null ? [1] : []
 
@@ -66,13 +75,15 @@ resource "aws_vpc_ipam_pool_cidr" "this" {
     }
   }
 
-  ipam_pool_id   = aws_vpc_ipam_pool.this[var.vpc_ipam.pools[0].name].id
-  netmask_length = each.value.netmask_length
-
   lifecycle {
     precondition {
-      condition     = each.value.cidr != "" && each.value.netmask_length != ""
+      condition     = !(each.value.cidr != null && each.value.netmask_length != null)
       error_message = "Cannot set both 'cidr' and 'netmask_length'."
+    }
+
+    precondition {
+      condition     = !(each.value.ipam_pool_name != null && each.value.ipam_pool_id != null)
+      error_message = "Cannot set both 'ipam_pool_name' and 'ipam_pool_id'."
     }
   }
 }

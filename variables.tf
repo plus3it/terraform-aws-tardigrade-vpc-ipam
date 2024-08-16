@@ -35,7 +35,8 @@ variable "vpc_ipam" {
         cidr_authorization_context_message   = optional(string)
         cidr_authorization_context_signature = optional(string)
       }))
-      ipam_pool_id   = string
+      ipam_pool_id   = optional(string)
+      ipam_pool_name = optional(string)
       netmask_length = optional(number)
     })), [])
     pool_cidr_allocations = optional(list(object({
