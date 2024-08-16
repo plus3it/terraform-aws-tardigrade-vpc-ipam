@@ -42,7 +42,7 @@ module "create_ipam" {
         name = "prod_cidrs"
         cidr = "10.0.0.0/16"
 
-        ipam_pool_id = "pool_of_cidrs"
+        ipam_pool_name = "pool_of_cidrs"
       },
     ]
   }
