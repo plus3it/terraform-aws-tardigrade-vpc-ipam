@@ -33,11 +33,11 @@ resource "aws_vpc_ipam_pool" "this" {
   public_ip_source                  = each.value.public_ip_source
   source_ipam_pool_id               = each.value.source_ipam_pool_id
 
-  ipam_scope_id = coalesce(
-    each.value.ipam_scope_name == "private_default_scope" ? aws_vpc_ipam.this[0].private_default_scope_id : null,
-    each.value.ipam_scope_name == "public_default_scope" ? aws_vpc_ipam.this[0].public_default_scope_id : null,
-    try(aws_vpc_ipam_scope.this[each.value.ipam_scope_name].id, null),
-    each.value.ipam_scope_id,
+  ipam_scope_id = (
+    each.value.ipam_scope_name == "private_default_scope" ? aws_vpc_ipam.this[0].private_default_scope_id : (
+      each.value.ipam_scope_name == "public_default_scope" ? aws_vpc_ipam.this[0].public_default_scope_id : (
+        each.value.ipam_scope_name != null ? aws_vpc_ipam_scope.this[each.value.ipam_scope_name].id : (
+    each.value.ipam_scope_id)))
   )
 
   tags = merge(
@@ -60,11 +60,7 @@ resource "aws_vpc_ipam_pool_cidr" "this" {
 
   cidr           = each.value.cidr
   netmask_length = each.value.netmask_length
-
-  ipam_pool_id = try(
-    aws_vpc_ipam_pool.this[each.value.ipam_pool_name].id,
-    each.value.ipam_pool_id,
-  )
+  ipam_pool_id   = each.value.ipam_pool_name != null ? aws_vpc_ipam_pool.this[each.value.ipam_pool_name].id : each.value.ipam_pool_id
 
   dynamic "cidr_authorization_context" {
     for_each = each.value.cidr_authorization_context != null ? [1] : []

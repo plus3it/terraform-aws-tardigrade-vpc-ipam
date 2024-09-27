@@ -4,6 +4,15 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
+### [1.1.1] (https://github.com/plus3it/terraform-aws-tardigrade-vpc-ipam/releases/tag/1.1.1)
+
+**Released**: 2024.09.27
+
+**Summary**:
+
+*   Uses ternary instead of `try()` to avoid unnecessary resource cycles when adding
+    new pools/pool_cidrs
+
 ### [1.1.0] (https://github.com/plus3it/terraform-aws-tardigrade-vpc-ipam/releases/tag/1.1.0)
 
 **Released**: 2024.08.16
